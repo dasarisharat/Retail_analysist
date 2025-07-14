@@ -26,5 +26,5 @@ if __name__=='__main__' :
     aggregated_results = DataManipulation.count_orders_state(joined_df)
     
     aggregated_results.show()
-    print("j")
+    
     print("end of main")
