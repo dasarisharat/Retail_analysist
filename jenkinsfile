@@ -41,17 +41,20 @@ pipeline {
         }
         stage('Package') {
             steps {
+                sh 'rm -rf retailproject'
+                sh 'rm -rf retailproject'
                 // Create the zip file but exclude the venv directory
-                sh 'zip -r retailproject.zip . -x "retail_pipeline_venv/*"'
+                sh 'rsync -av --exclude retail_pipeline_venv --exclude retailproject . retailproject/'
+                sh 'zip -r retailproject.zip retailproject'
             }
         }
         stage('Deploy') {
             steps {
                 // Add deployment steps here (e.g., deploy to a server or cloud)
                 sh 'sshpass -p $LABS_PSW scp -o StrictHostKeyChecking=no -r retailproject.zip $LABS_USR@g02.itversity.com:/home/itv017171/retailproject'
+    
             }
         }
     }
 }
-
 
