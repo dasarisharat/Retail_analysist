@@ -44,7 +44,7 @@ pipeline {
                 sh 'rm -rf retailproject'
                 sh 'rm -rf retailproject'
                 // Create the zip file but exclude the venv directory
-                sh 'rsync -av --exclude retail_pipeline_venv --exclude retailproject . retailproject/'
+                
                 sh 'zip -r retailproject.zip retailproject'
             }
         }
