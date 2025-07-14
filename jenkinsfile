@@ -23,6 +23,7 @@ pipeline {
         }
         stage("Package"){
             steps {
+                sh 'sudo apt-get update && sudo apt-get install -y zip'
                 sh 'zip -r retailproject.zip .'
             }
         }
