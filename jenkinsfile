@@ -23,7 +23,7 @@ pipeline {
         }
         stage("Package"){
             steps {
-                sh 'zip -r retail_analysist.zip .'
+                sh 'zip -r retailproject.zip .'
             }
         }
         stage('Deploy'){
