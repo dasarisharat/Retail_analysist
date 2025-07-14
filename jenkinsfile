@@ -41,9 +41,17 @@ pipeline {
         }
         stage('Package') {
             steps {
+                 sh 'rm -f retailproject'
+            // Remove dir if it exists
                 sh 'rm -rf retailproject'
+
+            // Recreate the directory
                 sh 'mkdir -p retailproject'
+
+            // Copy everything except the virtual environment and the packaging dir itself
                 sh 'find . -maxdepth 1 ! -name "retail_pipeline_venv" ! -name "retailproject" ! -name "." -exec cp -r {} retailproject/ \\;'
+
+            // Zip the directory
                 sh 'zip -r retailproject.zip retailproject'
             }
         }
