@@ -42,9 +42,8 @@ pipeline {
         stage('Package') {
             steps {
                 sh 'rm -rf retailproject'
-                sh 'rm -rf retailproject'
-                // Create the zip file but exclude the venv directory
-                
+                sh 'mkdir -p retailproject'
+                sh 'find . -maxdepth 1 ! -name "retail_pipeline_venv" ! -name "retailproject" ! -name "." -exec cp -r {} retailproject/ \\;'
                 sh 'zip -r retailproject.zip retailproject'
             }
         }
